@@ -1,0 +1,166 @@
+DRUG,LAB,VAR
+AMIKACIN, AUC (mg/l*h),AUC
+AMIKACIN, C1h/MIC ratio,CMIC
+AMIKACIN, Cmax (mg/l),CMAX
+AMIKACIN, Concentration (mg/l),DV
+AMIKACIN,Clearance (L/h),CL
+AMIKACIN,Volume of distribution (L),V
+AMIKACIN,Central Volume of distribution (L),V1
+AMIKACIN,Central Volume of distribution (L),V2
+AMIKACIN,Peripheral Volume of distribution (L),V3
+AMIKACIN,Intercompartmental clearance (L/h),Q
+AMIKACIN,Intercompartmental clearance (L/h),Q2
+AMIKACIN,Intercompartmental clearance (L/h),Q3
+AMIKACIN,Intercompartmental clearance (L/h),Q12
+AMIKACIN,Intercompartmental clearance (L/h),Q21
+AMIKACIN,Intercompartmental clearance (L/h),Q13
+AMIKACIN,Intercompartmental clearance (L/h),Q31
+AMIKACIN,Weight (kg),WT
+AMIKACIN,Age (yrs),AGE
+AMIKACIN,Creatinine Clearance (ml/min),CRCL
+AMIKACIN,Body Mass Index (kg/m2),BMI
+AMIKACIN,Lean Body Mass (kg),LBM
+AMIKACIN,Height (cm),HT
+AMIKACIN,Serum creatinine (g/dL),SCR
+AMIKACIN,Body Surface Area (m2),BSA
+DOCETAXEL, AUC (mg/l*h),AUC
+DOCETAXEL, Cmax (mg/l),CMAX
+DOCETAXEL, Concentration (mg/l),DV
+DOCETAXEL,Clearance (L/h),CL
+DOCETAXEL,Volume of distribution (L),V
+DOCETAXEL,Central Volume of distribution (L),V1
+DOCETAXEL,Central Volume of distribution (L),V2
+DOCETAXEL,Peripheral Volume of distribution (L),V3
+DOCETAXEL,Intercompartmental clearance (L/h),Q
+DOCETAXEL,Intercompartmental clearance (L/h),Q2
+DOCETAXEL,Intercompartmental clearance (L/h),Q3
+DOCETAXEL,Intercompartmental clearance (L/h),Q12
+DOCETAXEL,Intercompartmental clearance (L/h),Q21
+DOCETAXEL,Intercompartmental clearance (L/h),Q13
+DOCETAXEL,Intercompartmental clearance (L/h),Q31
+DOCETAXEL,Weight (kg),WT
+DOCETAXEL,Age (yrs),AGE
+DOCETAXEL,Creatinine Clearance (ml/min),CRCL
+DOCETAXEL,Body Mass Index (kg/m2),BMI
+DOCETAXEL,Lean Body Mass (kg),LBM
+DOCETAXEL,Height (cm),HT
+DOCETAXEL,Serum creatinine (g/dL),SCR
+DOCETAXEL,Body Surface Area (m2),BSA
+GABAPENTIN, AUC (mg/l*h),AUC
+GABAPENTIN, Cmax (mg/l),CMAX
+GABAPENTIN, Concentration (mg/l),DV
+GABAPENTIN,Clearance (L/h),CL
+GABAPENTIN,Volume of distribution (L),V
+GABAPENTIN,Central Volume of distribution (L),V1
+GABAPENTIN,Peripheral Volume of distribution (L),V2
+GABAPENTIN,Peripheral Volume of distribution (L),V3
+GABAPENTIN,Intercompartmental clearance (L/h),Q
+GABAPENTIN,Intercompartmental clearance (L/h),Q2
+GABAPENTIN,Intercompartmental clearance (L/h),Q3
+GABAPENTIN,Intercompartmental clearance (L/h),Q12
+GABAPENTIN,Intercompartmental clearance (L/h),Q21
+GABAPENTIN,Intercompartmental clearance (L/h),Q13
+GABAPENTIN,Intercompartmental clearance (L/h),Q31
+GABAPENTIN,Weight (kg),WT
+GABAPENTIN,Age (yrs),AGE
+GABAPENTIN,Creatinine Clearance (ml/min),CRCL
+GABAPENTIN,Body Mass Index (kg/m2),BMI
+GABAPENTIN,Lean Body Mass (kg),LBM
+GABAPENTIN,Height (cm),HT
+GABAPENTIN,Serum creatinine (g/dL),SCR
+GABAPENTIN,Body Surface Area (m2),BSA
+MEROPENEM, AUC (mg/l*h),AUC
+MEROPENEM, Cmax (mg/l),CMAX
+MEROPENEM, T>MIC (%),TMIC
+MEROPENEM, Concentration (mg/l),DV
+MEROPENEM,Clearance (L/h),CL
+MEROPENEM,Volume of distribution (L),V
+MEROPENEM,Central Volume of distribution (L),V1
+MEROPENEM,Central Volume of distribution (L),V2
+MEROPENEM,Peripheral Volume of distribution (L),V3
+MEROPENEM,Intercompartmental clearance (L/h),Q
+MEROPENEM,Intercompartmental clearance (L/h),Q2
+MEROPENEM,Intercompartmental clearance (L/h),Q3
+MEROPENEM,Intercompartmental clearance (L/h),Q12
+MEROPENEM,Intercompartmental clearance (L/h),Q21
+MEROPENEM,Intercompartmental clearance (L/h),Q13
+MEROPENEM,Intercompartmental clearance (L/h),Q31
+MEROPENEM,Weight (kg),WT
+MEROPENEM,Age (yrs),AGE
+MEROPENEM,Creatinine Clearance (ml/min),CRCL
+MEROPENEM,Body Mass Index (kg/m2),BMI
+MEROPENEM,Lean Body Mass (kg),LBM
+MEROPENEM,Height (cm),HT
+MEROPENEM,Serum creatinine (g/dL),SCR
+MEROPENEM,Body Surface Area (m2),BSA
+MYCACID, AUC (mg/l*h),AUC
+MYCACID, Cmax (mg/l),CMAX
+MYCACID, Concentration (mg/l),DV
+MYCACID,Clearance (L/h),CL
+MYCACID,Volume of distribution (L),V
+MYCACID,Central Volume of distribution (L),V1
+MYCACID,Central Volume of distribution (L),V2
+MYCACID,Peripheral Volume of distribution (L),V3
+MYCACID,Intercompartmental clearance (L/h),Q
+MYCACID,Intercompartmental clearance (L/h),Q2
+MYCACID,Intercompartmental clearance (L/h),Q3
+MYCACID,Intercompartmental clearance (L/h),Q12
+MYCACID,Intercompartmental clearance (L/h),Q21
+MYCACID,Intercompartmental clearance (L/h),Q13
+MYCACID,Intercompartmental clearance (L/h),Q31
+MYCACID,Weight (kg),WT
+MYCACID,Age (yrs),AGE
+MYCACID,Creatinine Clearance (ml/min),CRCL
+MYCACID,Body Mass Index (kg/m2),BMI
+MYCACID,Lean Body Mass (kg),LBM
+MYCACID,Height (cm),HT
+MYCACID,Serum creatinine (g/dL),SCR
+MYCACID,Body Surface Area (m2),BSA
+RIVAROXABAN, AUC (mg/ml*h),AUC
+RIVAROXABAN, Cmax (mg/ml),CMAX
+RIVAROXABAN, Concentration (mg/ml),DV
+RIVAROXABAN,Clearance (L/h),CL
+RIVAROXABAN,Volume of distribution (L),V
+RIVAROXABAN,Central Volume of distribution (L),V1
+RIVAROXABAN,Central Volume of distribution (L),V2
+RIVAROXABAN,Peripheral Volume of distribution (L),V3
+RIVAROXABAN,Intercompartmental clearance (L/h),Q
+RIVAROXABAN,Intercompartmental clearance (L/h),Q2
+RIVAROXABAN,Intercompartmental clearance (L/h),Q3
+RIVAROXABAN,Intercompartmental clearance (L/h),Q12
+RIVAROXABAN,Intercompartmental clearance (L/h),Q21
+RIVAROXABAN,Intercompartmental clearance (L/h),Q13
+RIVAROXABAN,Intercompartmental clearance (L/h),Q31
+RIVAROXABAN,Weight (kg),WT
+RIVAROXABAN,Age (yrs),AGE
+RIVAROXABAN,Creatinine Clearance (ml/min),CRCL
+RIVAROXABAN,Body Mass Index (kg/m2),BMI
+RIVAROXABAN,Lean Body Mass (kg),LBM
+RIVAROXABAN,Height (cm),HT
+RIVAROXABAN,Serum creatinine (g/dL),SCR
+RIVAROXABAN,Body Surface Area (m2),BSA
+TACROLIMUS, AUC (ng/ml*h),AUC
+TACROLIMUS, Cmax (ng/ml),CMAX
+TACROLIMUS, Concentration (ng/ml),DV
+TACROLIMUS, Ctrough (ng/ml),CMIN_SS
+TACROLIMUS, Cmax at SS (ng/ml),CMAX_SS
+TACROLIMUS,Clearance (L/h),CL
+TACROLIMUS,Volume of distribution (L),V
+TACROLIMUS,Central Volume of distribution (L),V1
+TACROLIMUS,Central Volume of distribution (L),V2
+TACROLIMUS,Peripheral Volume of distribution (L),V3
+TACROLIMUS,Intercompartmental clearance (L/h),Q
+TACROLIMUS,Intercompartmental clearance (L/h),Q2
+TACROLIMUS,Intercompartmental clearance (L/h),Q3
+TACROLIMUS,Intercompartmental clearance (L/h),Q12
+TACROLIMUS,Intercompartmental clearance (L/h),Q21
+TACROLIMUS,Intercompartmental clearance (L/h),Q13
+TACROLIMUS,Intercompartmental clearance (L/h),Q31
+TACROLIMUS,Weight (kg),WT
+TACROLIMUS,Age (yrs),AGE
+TACROLIMUS,Creatinine Clearance (ml/min),CRCL
+TACROLIMUS,Body Mass Index (kg/m2),BMI
+TACROLIMUS,Lean Body Mass (kg),LBM
+TACROLIMUS,Height (cm),HT
+TACROLIMUS,Serum creatinine (g/dL),SCR
+TACROLIMUS,Body Surface Area (m2),BSA
