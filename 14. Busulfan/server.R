@@ -5,7 +5,7 @@ library(rootSolve)
 
 labDat <- data.table(read.csv("labs.csv",head=T,stringsAsFactors=F))[DRUG=="BUSULFAN",c("VAR","LAB"),with=F]
 
-demoDat <- data.table(read.csv("Main_Population.csv", na.strings = "na"))[,c("BSA","CREAT","BMI") := round(.SD,2), .SDcols=c("BSA","CREAT","BMI")]
+demoDat <- data.table(read.csv("CaseStudy/14. Busulfan/Main_Population.csv", na.strings = "na"))[,c("BSA","CREAT","BMI") := round(.SD,2), .SDcols=c("BSA","CREAT","BMI")]
 
 
 popFun <- function(n=20) {
@@ -25,22 +25,11 @@ simPar <- function(indDat,input){
     # Clearance
     CLi = (CL*((1/100)*pCL))*exp(OM1*sqrt(ETA1))*(WT/35)**(-0.34)
     # Central volume of distribution
-    V2i = (V2*((1/100)*pV2))*exp(OM2*sqrt(ETA2))*(WT/70)**(0.99)
+    V1i = (V1*((1/100)*pV1))*exp(OM2*sqrt(ETA2))*(WT/70)**(0.99)
 
     # Dose
     A1 = (c(DOSE, DOSE2)[CHILD])*WT
-    
-    
-    k20<-CLi/V2i
-    k23<-Qi/V2i
-    k32<-Qi/V3i
-    
-    a<-k20+k23+k32
-    
-    l1<-(a+sqrt((a^2)-(4*k20*k32)))/2
-    l2<-(a-sqrt((a^2)-(4*k20*k32)))/2
-    C1<-((k32-l1)/(l2-l1))/V2i
-    C2<-((k32-l2)/(l1-l2))/V2i
+    k<-CLi/V1i
     R <- A1/pD1
     
     nest <- function(time,dno=1){
@@ -50,20 +39,12 @@ simPar <- function(indDat,input){
       DV
     }
     
-    TMIC <- function() {
-      root <- uniroot.all(function(x)(nest(x))-16,c(0,II))
-      if (length(root)==1) { return(II - root[1])
-      } else if (length(root)==0) { return(0)
-      } else {
-        return(diff(root))
-      }
-    }
-    # (TMIC())
-    list(CL=CLi,V2=V2i,V3=V3i,D1=pD1,Q=Qi,A1=A1,AUC=A1/CLi,CMAX=R*(C1/l1*(1-exp(-l1*pD1))+C2/l2*(1-exp(-l2*pD1))),TMAX=pD1,CSS=(A1/CLi)/II,TMIC=(TMIC()/II)*100,TOTAL=0)
+
+    list(CL=CLi,V2=V2i,V3=V3i,D1=pD1,Q=Qi,A1=A1,AUC=A1/CLi,CMAX=R*(C1/l1*(1-exp(-l1*pD1))+C2/l2*(1-exp(-l2*pD1))),TMAX=pD1,CSS=(A1/CLi)/II,TOTAL=0)
   })
 }
 
-par <- list(CL=14.6,V2=10.8,V3=12.6,D1=0.5,Q=18.6,ETA1=0.118,ETA2=0.143,ETA3=0.290,ETA4=0.102,EPS=0.035, pV3=100, pQ=100, pCL=100, pV2=100)
+par <- list(CL=14.6,V2=10.8,D1=0.5,ETA1=0.118,ETA2=0.143,ETA3=0.290,ETA4=0.102,EPS=0.035, pV3=100, pQ=100, pCL=100, pV2=100)
 
 simInd <- function(indDat,input,time= exp(seq(0,log(49),len=24))-1){
   with(c(indDat,input), {
