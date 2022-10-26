@@ -23,13 +23,10 @@ simPar <- function(indDat,input){
   with(c(indDat,input,par), {
     
     # Clearance
-    CLi = (CL*((1/100)*pCL))*exp(OM1*sqrt(ETA1))*(CRCL/83)**(0.62)*(AGE/35)**(-0.34)
+    CLi = (CL*((1/100)*pCL))*exp(OM1*sqrt(ETA1))*(WT/35)**(-0.34)
     # Central volume of distribution
     V2i = (V2*((1/100)*pV2))*exp(OM2*sqrt(ETA2))*(WT/70)**(0.99)
-    # Peripheral volume of distribution
-    V3i = (V2*((1/100)*pV3))*exp(OM3*sqrt(ETA3))
-    # Inter-comparmental clearance
-    Qi = (Q*((1/100)*pQ))*exp(OM4*sqrt(ETA4))
+
     # Dose
     A1 = DOSE
     
