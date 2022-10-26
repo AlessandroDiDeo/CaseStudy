@@ -159,7 +159,7 @@ function(input, output, session) {
   output$pkComp <- renderPlot({
     # print(simDat())
     if (input$sum) {
-      test <- melt(simTot()[,c("label2", "label", "AUC", "CMAX", "TMAX"), with=F], id.vars=c("label", "label2") )
+      test <- melt(simTot()[,c("label2", "label", "AUC", "CMAX", "TMAX"), with=F], id.vars=c("label", "label2"))
       minn <- min(test[variable==input$label]$value)
       test <- test[variable==input$label,list(N=.N, Y=min(value)), by="label"]
       test$Y <- minn- minn
