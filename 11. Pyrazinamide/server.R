@@ -159,17 +159,15 @@ function(input, output, session) {
   output$pkComp <- renderPlot({
     # print(simDat())
     if (input$sum) {
-      test <- melt(simTot()[,c("label2", "label", "AUC", "CMAX", "TMAX"), with=F], id.vars=c("label", "label2"))
-      #minn <- min(test[variable==input$label]$value)
-      #test <- test[variable==input$label,list(N=.N, Y=min(value)), by="label"]
-      #test$Y <- minn- minn
+      test <- melt(simTot()[,c("label2", "label", "AUC", "CMAX", "TMAX"), with=F], id.vars=c("label", "label2") )
+      minn <- min(test[variable==input$label]$value)
+      test <- test[variable==input$label,list(N=.N, Y=min(value)), by="label"]
+      test$Y <- minn- minn
       # print(test)
-    ggplot(simTot())+geom_ribbon(data=adultTot[,list(U=quantile(value, 0.875), L=quantile(value, 0.125),WT=c(15,105))],aes(x=WT, ymin=L, ymax=U, fill="75% CI of Adults (2000 mg)"), alpha=1/8)+geom_boxplot(aes_string("label+2.5",input$label,group="label", fill="label2"))+labs(x="", y=labTab[[match(input$label,names(labTab))]],fill="")+theme(legend.position="bottom")+geom_text(data=test, aes(label=N, x=label+2.5, y=Y*0.95))
+    ggplot(simTot())+geom_ribbon(data=adultTot[variable==input$label,list(U=quantile(value, 0.875), L=quantile(value, 0.125),WT=c(15,105))],aes(x=WT, ymin=L, ymax=U, fill="75% CI of Adults (2000 mg)"), alpha=1/8)+geom_boxplot(aes_string("label+2.5",input$label,group="label", fill="label2"))+labs(x="", y=labTab[[match(input$label,names(labTab))]],fill="")+theme(legend.position="bottom")+geom_text(data=test, aes(label=N, x=label+2.5, y=Y*0.95))
     } else {
-      ggplot(simTot())+geom_point(aes_string("WT",input$label,group="label", col="label2"))+labs(x="", y=labTab[[match(input$label,names(labTab))]],fill="", col="")+theme(legend.position="bottom")+geom_ribbon(data=adultTot[,list(U=quantile(value, 0.875), L=quantile(value, 0.125),WT=c(15,105))],aes(x=WT, ymin=L, ymax=U, fill="75% CI of Adults (2000 mg)"), alpha=1/8)
+      ggplot(simTot())+geom_point(aes_string("WT",input$label,group="label", col="label2"))+labs(x="", y=labTab[[match(input$label,names(labTab))]],fill="", col="")+theme(legend.position="bottom")+geom_ribbon(data=adultTot[variable==input$label,list(U=quantile(value, 0.875), L=quantile(value, 0.125),WT=c(15,105))],aes(x=WT, ymin=L, ymax=U, fill="75% CI of Adults (2000 mg)"), alpha=1/8)
     }
   })
 }
   
-#variable==input$label
-#variable==input$label
