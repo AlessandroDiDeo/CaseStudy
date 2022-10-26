@@ -7,8 +7,8 @@ shinyUI(navbarPage(
   tabPanel("Plot",
            sidebarLayout(
              sidebarPanel(
-               sliderInput("DOSE", "Dose in children (< 9 kg)",  min = 0.1, max = 2, step = 0.1, value = 1000),
-               sliderInput("DOSE", "Dose (> 9 kg)",  min = 0.1, max = 2, step = 0.1, value = 1000),
+               sliderInput("DOSE", "Dose in children (< 9 kg)",  min = 0.1, max = 2, step = 0.1, value = 0.1),
+               sliderInput("DOSE2", "Dose (> 9 kg)",  min = 0.1, max = 2, step = 0.1, value = 0.1),
                # sliderInput("pCL",  "Percentage change in Clearance", min = 10,  max = 500, step=5, value = 100),
                # sliderInput("pV2", "Percentage change in Central Volume of Distribution", min = 10,  max = 500, step=5, value = 100),
                # sliderInput("pV3", "Percentage change in Peripheral Volume of Distribution", min = 10,  max = 500, step=5, value = 100),
