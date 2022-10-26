@@ -10,7 +10,7 @@ demoDat <- data.table(read.csv("Main_Population.csv", na.strings = "na"))[,c("BS
 
 popFun <- function(n=20) {
   popDat <- demoDat[][sample(1:length(ID),n)]
-  popDat <- cbind(popDat,data.table(OM1=rnorm(n),OM2=rnorm(n),OM3=rnorm(n),OM4=rnorm(n)))
+  popDat <- cbind(popDat,data.table(OM1=rnorm(n),OM2=rnorm(n),OM3=rnorm(n),OM4=rnorm(n)), CHILD = cut(popDat$WT, breaks=c(-Inf, 9, Inf), labels = FALSE))
   popDat[order(ID)]
 }
 
@@ -28,7 +28,8 @@ simPar <- function(indDat,input){
     V2i = (V2*((1/100)*pV2))*exp(OM2*sqrt(ETA2))*(WT/70)**(0.99)
 
     # Dose
-    A1 = DOSE
+    A1 = (c(DOSE, DOSE2)[CHILD])*WT
+    
     
     k20<-CLi/V2i
     k23<-Qi/V2i
