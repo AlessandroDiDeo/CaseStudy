@@ -10,7 +10,7 @@ demoDat <- data.table(read.csv("Main_Population.csv", na.strings = "na"))[,c("BS
 
 popFun <- function(n=20) {
   popDat <- demoDat[][sample(1:length(ID),n)]
-  popDat <- cbind(popDat,data.table(OM1=rnorm(n),OM2=rnorm(n),OM3=rnorm(n),OM4=rnorm(n)), CHILD = cut(popDat$WT, breaks=c(-Inf, 9, Inf), labels = FALSE))
+  popDat <- cbind(popDat,data.table(OM1=rnorm(n), OM2=rnorm(n)), CHILD = cut(popDat$WT, breaks=c(-Inf, 9, Inf), labels = FALSE))
   popDat[order(ID)]
 }
 
@@ -86,8 +86,8 @@ shinyServer(function(input, output) {
     labX <- c(labDat$LAB,X)[match(X,c(labDat$VAR,X))]
     labY <- c(labDat$LAB,Y)[match(Y,c(labDat$VAR,Y))]
     pCur <- switch(input$STRAT,
-                   SEX = ggplot(simPop(),aes_string(X,Y,col='c("Female","Male")[factor(SEX)]'))+layer1+labs(y=labY,x=labX,title="Meropenem"),
-                   AGE = ggplot(simPop(),aes_string(X,Y,col='c("<45","45+")[1+(AGE>45)]'))+layer1+labs(y=labY,x=labX,title="Meropenem"),
+                   SEX = ggplot(simPop(),aes_string(X,Y,col='c("Female","Male")[factor(SEX)]'))+layer1+labs(y=labY,x=labX,title="Busulfan"),
+                   AGE = ggplot(simPop(),aes_string(X,Y,col='c("<45","45+")[1+(AGE>45)]'))+layer1+labs(y=labY,x=labX,title="Busulfan"),
                    pCur <- ggplot(simPop(),aes_string(X,Y))+layer1
     )
     if (Y =="TMIC") pCur <- pCur + coord_cartesian(ylim=c(0,100)) + scale_y_continuous(breaks=seq(0,100,5))
@@ -132,7 +132,7 @@ shinyServer(function(input, output) {
   })
   
   output$popSum <- renderDataTable({
-    popSum <- popDat()[,2:11,with=F]
+    popSum <- popDat()[,2:10,with=F]
     popSum <- data.table(Median=apply(popSum,2,median),
                          Mean=apply(popSum,2,mean),
                          SD=apply(popSum,2,sd),
