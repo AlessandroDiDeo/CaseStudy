@@ -46,25 +46,18 @@ simPar <- function(indDat,input){
   })
 }
 
-par <- list(CL=14.6,V2=10.8,D1=0.5,ETA1=0.118,ETA2=0.143,ETA3=0.290,ETA4=0.102,EPS=0.035, pV1=100, pCL=100)
+par <- list(CL=14.6,V1=10.8,D1=0.5,ETA1=0.118,ETA2=0.143,ETA3=0.290,ETA4=0.102,EPS=0.035, pV1=100, pCL=100)
 
 simInd <- function(indDat,input,time= exp(seq(0,log(49),len=24))-1){
   with(c(indDat,input), {
     # Calculate rates
-    k20<-CL/V2
-    k23<-Q/V2
-    k32<-Q/V3
-    
-    a<-k20+k23+k32
-    
-    l1<-(a+sqrt((a^2)-(4*k20*k32)))/2
-    l2<-(a-sqrt((a^2)-(4*k20*k32)))/2
-    C1<-((k32-l1)/(l2-l1))/V2
-    C2<-((k32-l2)/(l1-l2))/V2
+    C = 1/V1
+    L = CL/V1
+
     R <- A1/D1
     
     nest <- function(time,dno){
-      DV <- R*(C1/l1*(1-exp(-l1*ifelse(time<=D1,time,D1)))*exp(-l1*(ifelse(time<=D1,0,time-D1)))+C2/l2*(1-exp(-l2*ifelse(time<=D1,time,D1)))*exp(-l2*(ifelse(time<=D1,0,time-D1))))
+      DV <- R*(C/L *(1-exp(-L*ifelse(time<=pD1,time,pD1)))*exp(-L*(ifelse(time<=pD1,0,time-pD1))))
       if(dno>=ADDL | sum(time>II)==0) return(DV)
       DV[time>II] <- DV[time>II]+nest(time[time>II]-II,dno+1)
       DV
