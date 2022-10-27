@@ -42,7 +42,7 @@ simPar <- function(indDat,input){
     }
     
 
-    list(CL=CLi,V1=V1i,D1=pD1, A1=A1,AUC=A1/CLi,CMAX=R*(C1/l1*(1-exp(-l1*pD1))+C2/l2*(1-exp(-l2*pD1))),TMAX=pD1,CSS=(A1/CLi)/II,TOTAL=0)
+    list(CL=CLi,V1=V1i,D1=pD1, A1=A1,AUC=A1/CLi,CMAX=R*(C/L*(1-exp(-L*pD1))),TMAX=pD1,CSS=(A1/CLi)/II,TOTAL=0)
   })
 }
 
