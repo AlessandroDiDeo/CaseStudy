@@ -138,7 +138,7 @@ shinyServer(function(input, output) {
                          SD=apply(popSum,2,sd),
                          "5th percentile"=apply(popSum,2,quantile,0.05),
                          "95th percentile"=apply(popSum,2,quantile,0.95))
-    cbind(Var=names(popDat())[2:11],popSum[,round(.SD,2), .SDcols=1:5])
+    cbind(Var=names(popDat())[2:10],popSum[,round(.SD,2), .SDcols=1:5])
   },options=list(paging=F,ordering=F,searching=F,info=F))#,include.rownames=F,comment=T)
   output$dlDat <- downloadHandler(
     filename = 'popDat.csv',
