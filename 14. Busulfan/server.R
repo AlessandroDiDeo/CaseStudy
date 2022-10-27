@@ -88,6 +88,7 @@ shinyServer(function(input, output) {
     pCur <- switch(input$STRAT,
                    SEX = ggplot(simPop(),aes_string(X,Y,col='c("Female","Male")[factor(SEX)]'))+layer1+labs(y=labY,x=labX,title="Busulfan"),
                    AGE = ggplot(simPop(),aes_string(X,Y,col='c("<45","45+")[1+(AGE>45)]'))+layer1+labs(y=labY,x=labX,title="Busulfan"),
+                   WT = ggplot(simPop(),aes_string(X,Y,col='c("<9","9+")[1+(WT>9)]'))+layer1+labs(y=labY,x=labX,title="Busulfan"),
                    pCur <- ggplot(simPop(),aes_string(X,Y))+layer1
     )
     if (Y =="TMIC") pCur <- pCur + coord_cartesian(ylim=c(0,100)) + scale_y_continuous(breaks=seq(0,100,5))
@@ -125,7 +126,7 @@ shinyServer(function(input, output) {
     enh <- NULL
     if (input$log) log <- scale_y_log10()
     if (input$enh) enh <- geom_point()
-    if (input$sum) return(ggplot(simDat[,list(DV=median(DV),U=quantile(DV,0.95),L=quantile(DV,0.05),U2=quantile(DV,0.75),L2=quantile(DV,0.25)),by="TIME"],aes(TIME,DV))+geom_ribbon(aes(ymin=L,ymax=U),alpha=1/4,fill="#d9230f")+geom_ribbon(aes(ymin=L2,ymax=U2),alpha=1/4,fill="#d9230f")+geom_line(aes(TIME,DV),col="red",size=1)+theme_bw()+coord_cartesian(xlim=c(0,input$II*(input$ADDL+1)))+log+enh+labs(x="Time (h)" , y="Concentration (mg/l)", title="Meropenem")+geom_hline(yintercept=16,linetype=2,col="purple",alpha=1/2)+geom_text(data=data.frame(TIME=input$ADDL*input$II,DV=16),aes(label="MIC",group="hans"),col="purple",alpha=1/2))
+    if (input$sum) return(ggplot(simDat[,list(DV=median(DV),U=quantile(DV,0.95),L=quantile(DV,0.05),U2=quantile(DV,0.75),L2=quantile(DV,0.25)),by=c("TIME", "CHILD")],aes(TIME,DV))+geom_ribbon(aes(ymin=L,ymax=U),alpha=1/4,fill="#d9230f")+geom_ribbon(aes(ymin=L2,ymax=U2),alpha=1/4,fill="#d9230f")+geom_line(aes(TIME,DV),col="red",size=1)+theme_bw()+coord_cartesian(xlim=c(0,input$II*(input$ADDL+1)))+log+enh+labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan")+geom_hline(yintercept=16,linetype=2,col="purple",alpha=1/2)+geom_text(data=data.frame(TIME=input$ADDL*input$II,DV=16),aes(label="MIC",group="hans"),col="purple",alpha=1/2))
     return(ggplot(simDat,aes(TIME,DV)) + geom_line(aes(group=ID,col=ID),alpha=1/4) +
              geom_line(data=simDat[,list(DV=median(DV)),by="TIME"],col="red",size=1) + theme_bw() +
              theme(legend.position="none")+coord_cartesian(xlim=c(0,input$II*(input$ADDL+1)))+log+enh+labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))#+scale_colour_manual(values=c("black", "grey50", "grey30", "grey70", "#d9230f")))
