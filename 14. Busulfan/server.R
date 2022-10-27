@@ -29,22 +29,24 @@ simPar <- function(indDat,input){
 
     # Dose
     A1 = (c(DOSE, DOSE2)[CHILD])*WT
-    k<-CLi/V1i
-    R <- A1/pD1
+    
+    C = 1/V1i   # Coefficient
+    L = CLi/V1i # Exponent
+    R = A1/pD1
     
     nest <- function(time,dno=1){
-      DV <- R*(C1/l1*(1-exp(-l1*ifelse(time<=pD1,time,pD1)))*exp(-l1*(ifelse(time<=pD1,0,time-pD1)))+C2/l2*(1-exp(-l2*ifelse(time<=pD1,time,pD1)))*exp(-l2*(ifelse(time<=pD1,0,time-pD1))))
+      DV <- R*(C/L *(1-exp(-L*ifelse(time<=pD1,time,pD1)))*exp(-L*(ifelse(time<=pD1,0,time-pD1))))
       if(dno>=5 | sum(time>II)==0) return(DV)
       DV[time>II] <- DV[time>II]+nest(time[time>II]-II,dno+1)
       DV
     }
     
 
-    list(CL=CLi,V2=V2i,V3=V3i,D1=pD1,Q=Qi,A1=A1,AUC=A1/CLi,CMAX=R*(C1/l1*(1-exp(-l1*pD1))+C2/l2*(1-exp(-l2*pD1))),TMAX=pD1,CSS=(A1/CLi)/II,TOTAL=0)
+    list(CL=CLi,V1=V1i,D1=pD1, A1=A1,AUC=A1/CLi,CMAX=R*(C1/l1*(1-exp(-l1*pD1))+C2/l2*(1-exp(-l2*pD1))),TMAX=pD1,CSS=(A1/CLi)/II,TOTAL=0)
   })
 }
 
-par <- list(CL=14.6,V2=10.8,D1=0.5,ETA1=0.118,ETA2=0.143,ETA3=0.290,ETA4=0.102,EPS=0.035, pV3=100, pQ=100, pCL=100, pV2=100)
+par <- list(CL=14.6,V2=10.8,D1=0.5,ETA1=0.118,ETA2=0.143,ETA3=0.290,ETA4=0.102,EPS=0.035, pV1=100, pCL=100)
 
 simInd <- function(indDat,input,time= exp(seq(0,log(49),len=24))-1){
   with(c(indDat,input), {
@@ -98,7 +100,7 @@ shinyServer(function(input, output) {
     if (Y =="TMIC") pCur <- pCur + coord_cartesian(ylim=c(0,100)) + scale_y_continuous(breaks=seq(0,100,5))
     
     if(input$lm) pCur <- pCur + geom_smooth(method="lm",se=FALSE)
-    pCur+theme_bw()+labs(x=labX,y=labY,col="",title="Meropenem")
+    pCur+theme_bw()+labs(x=labX,y=labY,col="",title="Busulfan")
   })
   
   output$lm_info <- renderPrint({
