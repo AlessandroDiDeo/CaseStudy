@@ -33,7 +33,7 @@ shinyUI(navbarPage(
                selectInput("COR1","Y-axis:",choices=c("Clearance"="CL","Central Volume of Distribution"="V2","Peripheral Volume of Distribution"="V3","Intercompartmental Clearance"="Q","Area Under the Curve"="AUC","Maximum Concentration"="CMAX","Time of maximum Concentration"="TMAX","Time Above MIC at SS" = "TMIC","Weight"="WT","Height"="HT","Age"="AGE","Serum Creatinine"="SCR","Albumin"="ALB","Lean Body Mass"="LBM","Body Mass Index"="BMI","Creatinine Clearance"="CRCL","BSA"="BSA"),selected="CL"),
                selectInput("COR2","X-axis:",choices=c("Clearance"="CL","Central Volume of Distribution"="V2","Peripheral Volume of Distribution"="V3","Intercompartmental Clearance"="Q","Area Under the Curve"="AUC","Maximum Concentration"="CMAX","Time of maximum Concentration"="TMAX","Time Above MIC at SS" = "TMIC","Weight"="WT","Height"="HT","Sex"="SEX","Age"="AGE","Serum Creatinine"="SCR","Albumin"="ALB","Lean Body Mass"="LBM","Body Mass Index"="BMI","Creatinine Clearance"="CRCL","BSA"="BSA","Total dataset"="TOTAL"),selected="WT"),
                checkboxInput("lm","Linear regression"),
-               selectInput("STRAT","Stratify by:",choices=c("None"=0,Sex="SEX",Age="AGE")),
+               selectInput("STRAT","Stratify by:",choices=c("None"=0,Sex="SEX",Age="AGE", Weight = "WT")),
                submitButton("Update Graph", icon=icon("refresh", class="fa-spin"))
              ),
              mainPanel(
