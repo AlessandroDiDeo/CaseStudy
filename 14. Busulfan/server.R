@@ -10,7 +10,7 @@ demoDat <- data.table(read.csv("Main_Population.csv"))[,c("BSA","CRCL","BMI","LB
 popFun <- function(n=20) {
   popDat <- demoDat[][sample(1:length(ID),n)]
   popDat <- cbind(popDat,data.table(OM1=rnorm(n), OM2=rnorm(n)), CHILD = cut(popDat$WT, breaks=c(-Inf, 9, Inf), labels = FALSE))
-  popDat$POP_LAB <- c("<9 kg", ">9 kg")[popDat$CHILD+1]
+  popDat$POP_LAB <- c("<9 kg", ">9 kg")[popDat$CHILD]
   popDat[order(ID)]
 }
 
