@@ -10,6 +10,7 @@ demoDat <- data.table(read.csv("Main_Population.csv"))[,c("BSA","CRCL","BMI","LB
 popFun <- function(n=20) {
   popDat <- demoDat[][sample(1:length(ID),n)]
   popDat <- cbind(popDat,data.table(OM1=rnorm(n), OM2=rnorm(n)), CHILD = cut(popDat$WT, breaks=c(-Inf, 9, Inf), labels = FALSE))
+  popDat$POP_LAB <- c("<9 kg", ">9 kg")[popDat$CHILD+1]
   popDat[order(ID)]
 }
 
@@ -125,7 +126,8 @@ shinyServer(function(input, output) {
     enh <- NULL
     if (input$log) log <- scale_y_log10()
     if (input$enh) enh <- geom_point()
-    if (input$sum) return(ggplot(simDat[,list(DV=median(DV),U=quantile(DV,0.95),L=quantile(DV,0.05),U2=quantile(DV,0.75),L2=quantile(DV,0.25)),by=c("TIME")],aes(TIME,DV))+geom_ribbon(aes(ymin=L,ymax=U),alpha=1/4,fill="#d9230f") +
+    if (input$sum) return(ggplot(simDat[,list(DV=median(DV),U=quantile(DV,0.95),L=quantile(DV,0.05),U2=quantile(DV,0.75),L2=quantile(DV,0.25)),by=c("TIME", "POP_LAB")],
+                                 aes(TIME,DV))+geom_ribbon(aes(ymin=L,ymax=U),alpha=1/4,fill="#d9230f") +
                             geom_ribbon(aes(ymin=L2,ymax=U2),alpha=1/4,fill="#d9230f") + geom_line(aes(TIME,DV),col="red",size=1) +
                             theme_bw() + coord_cartesian(xlim=c(0,input$II*(input$ADDL+1))) + log + enh +
                             labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
