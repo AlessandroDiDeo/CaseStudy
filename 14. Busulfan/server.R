@@ -63,7 +63,7 @@ simInd <- function(indDat,input,time= exp(seq(0,log(49),len=24))-1){
       DV
     }
     
-    list(TIME=time,DV=nest(time,1))
+    list(TIME=time,DV=nest(time,1), POP_LAB=POP_LAB)
   })
 }
 
