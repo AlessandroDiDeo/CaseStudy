@@ -121,15 +121,15 @@ shinyServer(function(input, output) {
   output$pkPlot <- renderPlot({
     times <- c(do.call(c,lapply(1:(input$ADDL),function(n)(exp(seq(0,log(input$II/4+1),len=input$tps))-1)*4+(n-1)*input$II)),
                (exp(seq(log(input$II/4+1),log((input$II*2)/4+1),log(input$II)/input$tps))-1)*4+(input$ADDL-1)*input$II,input$II*(input$ADDL+1))
-    simDat <- simPop()[,simInd(as.list(.SD),reactiveValuesToList(input),times),by=c("ID","POP_LAB")]
+    simDat <- simPop()[,simInd(as.list(.SD),reactiveValuesToList(input),times),by="ID"]
     
     log <- scale_y_continuous()
     enh <- NULL
     if (input$log) log <- scale_y_log10()
     if (input$enh) enh <- geom_point()
     if (input$sum) return(ggplot(simDat[,list(DV=median(DV),U=quantile(DV,0.95),L=quantile(DV,0.05),U2=quantile(DV,0.75),L2=quantile(DV,0.25)),by=c("TIME", "POP_LAB")],
-                                 aes(TIME,DV))+geom_ribbon(aes(ymin=L,ymax=U),alpha=1/4,fill="#d9230f") +
-                            geom_ribbon(aes(ymin=L2,ymax=U2),alpha=1/4,fill="#d9230f") + geom_line(aes(TIME,DV),col="red",size=1) +
+                                 aes(TIME,DV))+geom_ribbon(aes(ymin=L,ymax=U, fill = POP_LAB),alpha=1/2) +
+                            geom_ribbon(aes(ymin=L2,ymax=U2, fill = POP_LAB),alpha=1/4) + geom_line(aes(TIME,DV,col=POP_LAB),size=1) +
                             theme_bw() + coord_cartesian(xlim=c(0,input$II*(input$ADDL+1))) + log + enh +
                             labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
     return(ggplot(simDat,aes(TIME,DV)) + geom_line(aes(group=ID,col=ID),alpha=1/4) +
