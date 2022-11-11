@@ -131,10 +131,10 @@ shinyServer(function(input, output) {
                                  aes(TIME,DV))+geom_ribbon(aes(ymin=L,ymax=U, fill = POP_LAB),alpha=1/2) +
                             geom_ribbon(aes(ymin=L2,ymax=U2, fill = POP_LAB),alpha=1/4) + geom_line(aes(TIME,DV,col=POP_LAB),size=1) +
                             theme_bw() + coord_cartesian(xlim=c(0,input$II*(input$ADDL+1))) + log + enh +
-                            labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
+                            labs(x="Time (h)" , y="Concentration (ng/ml)", title="Busulfan"))
     return(ggplot(simDat, aes(TIME,DV)) + geom_line(aes(group=ID,col=ID),alpha=1/4) +
              geom_line(data=simDat[,list(DV=median(DV)),by= c("TIME")], size=1) + theme_bw() +
-             theme(legend.position="none")+coord_cartesian(xlim=c(0,input$II*(input$ADDL+1)))+log+enh+labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
+             theme(legend.position="none")+coord_cartesian(xlim=c(0,input$II*(input$ADDL+1)))+log+enh+labs(x="Time (h)" , y="Concentration (ng/ml)", title="Busulfan"))
   })
   
   output$popSum <- renderDataTable({
