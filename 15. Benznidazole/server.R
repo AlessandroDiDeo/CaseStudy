@@ -120,7 +120,7 @@ function(input, output, session) {
         labs(x='Time [hr]', y='') +
         scale_color_discrete(name="") +
         geom_hline(data = data.frame(state = "Amastigotes/Cell", thresh = 1), aes(yintercept = thresh), linetype = 'dotted') +
-        geom_hline(data = data.frame(state = "Drug Concentration [uM]", thresh = 38.4), aes(yintercept = thresh), linetype = 'dotted') +
+        geom_hline(data = data.frame(state = "Drug Concentration [uM]", thresh = 76.8), aes(yintercept = thresh), linetype = 'dotted') +
         scale_x_continuous(breaks = seq(4, input$interval_1[2]*24, by = round(input$interval_1[2]*24/18))) +
         theme_bw() + 
         theme(
