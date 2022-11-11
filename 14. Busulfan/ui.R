@@ -48,7 +48,7 @@ shinyUI(navbarPage(
                sliderInput("N",
                            "Number of subjects",
                            min = 5,
-                           max = 2800,
+                           max = 2000,
                            step = 5,
                            value = 20),
                downloadButton('dlDat', 'Download .csv')

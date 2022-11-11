@@ -4,7 +4,7 @@ library(data.table)
 library(rootSolve)
 
 labDat <- data.table(read.csv("labs.csv",head=T,stringsAsFactors=F))[DRUG=="BUSULFAN",c("VAR","LAB"),with=F]
-demoDat <- data.table(read.csv("Main_Population.csv"))[,c("BSA","CRCL","BMI","LBM") := round(.SD,2), .SDcols=c("BSA","CRCL","BMI","LBM")][AGE<=65][WT<=100]
+demoDat <- data.table(read.csv("Main_Population.csv"))[,c("BSA","CRCL","BMI","LBM") := round(.SD,2), .SDcols=c("BSA","CRCL","BMI","LBM")][AGE<=65][WT<=100][901:.N]
 
 
 popFun <- function(n=20) {
