@@ -35,7 +35,7 @@ dashboardPage(title = "T. Cruzi model",
                                    )),
                             column(width=3,
                                    box(width = NULL, 
-                                       radioButtons('input.mode_switch', label = h4(strong('Choose experimental design')),
+                                       radioButtons('mode_switch', label = h4(strong('Choose experimental design')),
                                                     choices = 
                                                       list('Standard experimental design (constant concentration)' = 1,
                                                            'Simulated experimental design' = 2),
