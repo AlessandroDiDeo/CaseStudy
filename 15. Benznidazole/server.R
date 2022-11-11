@@ -151,7 +151,7 @@ function(input, output, session) {
         geom_hline(data = data.frame(state = factor("Amastigotes/Cell", levels = c("Amastigotes/Cell", 'Total number of cells', 
                                                                                    'Infected cells [%]', "Drug Concentration [uM]")), thresh = 1), 
                    aes(yintercept = thresh), linetype = 'dotted') +
-        geom_hline(data = data.frame(state = "Drug Concentration [uM]", thresh = 38.4), aes(yintercept = thresh), linetype = 'dotted') +
+        geom_hline(data = data.frame(state = "Drug Concentration [uM]", thresh = 76.8), aes(yintercept = thresh), linetype = 'dotted') +
         labs(x='Time [hr]', y='') +
         scale_color_discrete(name="") +
         scale_fill_discrete(name="") +
