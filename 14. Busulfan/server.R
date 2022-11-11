@@ -28,7 +28,7 @@ simPar <- function(indDat,input){
     V1i = V1*exp(OM2*sqrt(ETA2))*(WT/9)**(0.958)
 
     # Dose
-    A1 = (c(DOSE, DOSE2)[CHILD])*WT
+    A1 = (c(DOSE, DOSE2)[CHILD])*WT*1000
     
     C = 1/V1i   # Coefficient
     L = CLi/V1i # Exponent
