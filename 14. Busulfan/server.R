@@ -132,8 +132,8 @@ shinyServer(function(input, output) {
                             geom_ribbon(aes(ymin=L2,ymax=U2, fill = POP_LAB),alpha=1/4) + geom_line(aes(TIME,DV,col=POP_LAB),size=1) +
                             theme_bw() + coord_cartesian(xlim=c(0,input$II*(input$ADDL+1))) + log + enh +
                             labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
-    return(ggplot(simDat,aes(TIME,DV)) + geom_line(aes(group=ID,col=ID),alpha=1/4) +
-             geom_line(data=simDat[,list(DV=median(DV)),by= c("TIME", "POP_LAB")],col=POP_LAB, size=1) + theme_bw() +
+    return(ggplot(simDat, aes(TIME,DV)) + geom_line(aes(group=ID,col=ID),alpha=1/4) +
+             geom_line(data=simDat[,list(DV=median(DV)),by= c("TIME", "POP_LAB")], size=1, aes(TIME, DV, col = POP_LAB)) + theme_bw() +
              theme(legend.position="none")+coord_cartesian(xlim=c(0,input$II*(input$ADDL+1)))+log+enh+labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
   })
   
