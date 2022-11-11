@@ -23,9 +23,9 @@ simPar <- function(indDat,input){
   with(c(indDat,input,par), {
     
     # Clearance
-    CLi = (CL*((1/100)*pCL))*exp(OM1*sqrt(ETA1))*(WT/9)**(0.749)
+    CLi = CL*exp(OM1*sqrt(ETA1))*(WT/9)**(0.749)
     # Central volume of distribution
-    V1i = (V1*((1/100)*pV1))*exp(OM2*sqrt(ETA2))*(WT/9)**(0.958)
+    V1i = V1*exp(OM2*sqrt(ETA2))*(WT/9)**(0.958)
 
     # Dose
     A1 = (c(DOSE, DOSE2)[CHILD])*WT
@@ -46,7 +46,7 @@ simPar <- function(indDat,input){
   })
 }
 
-par <- list(CL=2.81,V1=1, D1=2, ETA1=0.0523, ETA2=0.0359 ,EPS=0.035, pV1=100, pCL=100)
+par <- list(CL=2.81,V1=1, D1=2, ETA1=0.0523, ETA2=0.0359 ,EPS=0.035)
 
 simInd <- function(indDat,input,time= exp(seq(0,log(49),len=24))-1){
   with(c(indDat,input), {
