@@ -46,7 +46,7 @@ dashboardPage(title = "T. Cruzi model",
                                                                     fluidRow(column(6, numericInput("conc_1", HTML("Concentration [&mu;M]"), 
                                                                                                     value = 10)))),
                                                    sliderInput("interval_1", "Dose interval [days]", 
-                                                               min = 0, max = 14, value = c(0,3),
+                                                               min = 0, max = 7, value = c(0,3),
                                                                step = 1, ticks = F),
                                                    conditionalPanel(condition = 'input.mode_switch == 2',
                                                                     fluidRow(
