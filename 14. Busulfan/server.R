@@ -133,7 +133,7 @@ shinyServer(function(input, output) {
                             theme_bw() + coord_cartesian(xlim=c(0,input$II*(input$ADDL+1))) + log + enh +
                             labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
     return(ggplot(simDat,aes(TIME,DV)) + geom_line(aes(group=ID,col=ID),alpha=1/4) +
-             geom_line(data=simDat[,list(DV=median(DV)),by= c("TIME", "POP_LAB")],col="red",size=1) + theme_bw() +
+             geom_line(data=simDat[,list(DV=median(DV)),by= c("TIME", "POP_LAB")],col=POP_LAB, size=1) + theme_bw() +
              theme(legend.position="none")+coord_cartesian(xlim=c(0,input$II*(input$ADDL+1)))+log+enh+labs(x="Time (h)" , y="Concentration (mg/l)", title="Busulfan"))
   })
   
