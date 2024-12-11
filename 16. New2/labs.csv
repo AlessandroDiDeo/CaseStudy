@@ -1,0 +1,3 @@
+DRUG,LAB,VAR
+Drug_X, AUC (mg/L*h),AUC
+Drug_X, Cmax (mg/L),CMAX
